@@ -1,3 +1,46 @@
+const ADD_SMURF = 'ADD_SMURF';
+const GET_SMURF = 'GET_SMURF';
+const FETCHING_SMURF = 'FETCHING_SMURF';
+const SMURF_SUCCESS = 'SMURF_SUCCESS';
+const SMURF_FAILED = 'SMURF_FAILED';
+
+
+
+
+export function addSmurf ( name, age, height, id) {
+  return {
+    type: ADD_SMURF,
+    payload: {
+      name,
+      age, 
+      height,
+      id,
+    }
+  }
+}
+
+
+
+export function getSmurf (){
+  return(dispatch) => {
+    dispatch({ type: GET_SMURF })
+    axios.get(`http://localhost:3333`)
+      .then((res) => {
+        dispatch({ type: SMURF_SUCCESS, payload: res.data })
+      })
+      .catch((err) => {
+        dispatch9({ type: SMURF_FAILED, payload: err.response.data})
+      })
+  }
+}
+
+
+
+
+
+
+
+
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer

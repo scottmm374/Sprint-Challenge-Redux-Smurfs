@@ -8,9 +8,9 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import /* You need some sort of reducer */ './reducers';
 
-const logger = (store) => (next) =>(action) => {
-  next(action)
-}
+// const logger = (store) => (next) =>(action) => {
+//   next(action)
+// }
 
 const store = createStore(
   reducer,
