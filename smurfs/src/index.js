@@ -8,9 +8,6 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from  './reducers/index';
 
-// const logger = (store) => (next) =>(action) => {
-//   next(action)
-// }
 
 const store = createStore(
   reducer,

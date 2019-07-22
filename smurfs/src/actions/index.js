@@ -1,18 +1,18 @@
 import axios from 'axios';
 
-const ADD_SMURF = 'ADD_SMURF';
-const GET_SMURF = 'GET_SMURF';
-const SMURF_SUCCESS = 'SMURF_SUCCESS';
-const SMURF_FAILED = 'SMURF_FAILED';
+export const ADD_SMURF = 'ADD_SMURF';
+export const GET_SMURF = 'GET_SMURF';
+export const SMURF_SUCCESS = 'SMURF_SUCCESS';
+export const SMURF_FAILED = 'SMURF_FAILED';
 
 
 
 
-export const getSmurf = () => {
+export function getSmurf () {
   
   return(dispatch) => {
     dispatch({ type: GET_SMURF })
-    axios.get('http://localhost:3333/')
+    axios.get('http://localhost:3333/smurfs')
       .then((res) => {
         console.log("getSmurf", res)
         dispatch({ type: SMURF_SUCCESS, payload: res.data })
@@ -24,7 +24,7 @@ export const getSmurf = () => {
 }
 
 
-export const addSmurf = smurf => {
+export function addSmurf(smurf)  {
   const newSmurf = 
     axios.post('http://localhost:3333/smurfs/', smurf);
     return dispatch => {
