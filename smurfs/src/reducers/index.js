@@ -1,7 +1,52 @@
-/*
-  Be sure to import in all of the action types from `../actions`
-*/
+import {ADD_SMURF, GET_SMURF, SMURF_SUCCESS, SMURF_FAILED} from '../actions/index';
 
+
+
+const initialState = {
+  fetchingSmurfs: false,
+   addingSmurf: false,
+   errorMessage: null,
+   smurfs: []
+}
+
+
+export default function (state=initialState, action) {
+  switch (action.type) {
+    case ADD_SMURF: {
+      return {
+
+      }
+
+    }
+
+    case GET_SMURF: {
+      return {
+        ...state,
+        fetchingSmurfs: true,
+      }
+    }
+
+    case SMURF_SUCCESS: {
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        errorMessage: null,
+      }
+    }
+
+    case SMURF_FAILED: {
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        errorMessage: action.payload.message,
+      }
+    }
+    
+    default:
+      return state
+  }
+
+}
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
