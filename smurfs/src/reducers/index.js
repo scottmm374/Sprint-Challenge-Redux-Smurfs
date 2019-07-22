@@ -1,23 +1,24 @@
-import { GET_SMURF,
-         SMURF_SUCCESS,
-          SMURF_FAILED,
-          ADD_SMURF,
-          NEW_SMURF_SUCCESS,
-          NEW_SMURF_FAILED
-        } from '../actions/index';
+import {
+  GET_SMURF,
+  SMURF_SUCCESS,
+  SMURF_FAILED,
+  ADD_SMURF,
+  NEW_SMURF_SUCCESS,
+  NEW_SMURF_FAILED
+} from '../actions/index';
 
 
 
 
 const initialState = {
   fetchingSmurfs: false,
-   addingSmurf: false,
-   errorMessage: null,
-   smurfs: []
+  addingSmurf: false,
+  errorMessage: null,
+  smurfs: []
 }
 
 
-export default function (state=initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
 
     case GET_SMURF: {
@@ -30,6 +31,7 @@ export default function (state=initialState, action) {
     case SMURF_SUCCESS: {
       return {
         ...state,
+        smurfs: action.payload,
         fetchingSmurfs: false,
         errorMessage: null,
       }
@@ -46,6 +48,7 @@ export default function (state=initialState, action) {
     case ADD_SMURF: {
       return {
         ...state,
+        addingSmurf: true,
 
       }
     }
@@ -53,6 +56,8 @@ export default function (state=initialState, action) {
     case NEW_SMURF_SUCCESS: {
       return {
         ...state,
+        smurfs: action.payload,
+        addingSmurf: false,
 
       }
     }
@@ -60,10 +65,14 @@ export default function (state=initialState, action) {
     case NEW_SMURF_FAILED: {
       return {
         ...state,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        errorMessage: action.payload,
         
+
       }
     }
-    
+
     default:
       return state
   }
@@ -83,7 +92,7 @@ export default function (state=initialState, action) {
 
 /*
   You'll only need one smurf reducer for this project.
-  Feel free to export it as a default and import as rootReducer. 
+  Feel free to export it as a default and import as rootReducer.
   This will guard your namespacing issues.
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
