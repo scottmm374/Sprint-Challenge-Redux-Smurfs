@@ -4,27 +4,22 @@ import { addSmurf } from '../actions/index';
 
 
 class SmurfForm extends React.Component {
-    constructor() {
-        super()
-        this.state = {
+        state = {
             name: '',
             age: '',
             height: '',
-        }
-    }
+        };
+    
 
     handleChange = (e) => {
         e.preventDefault()
         this.setState({
-            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value
         });
     };
 
     newSmurf = (e) => {
-        e.preventDefault()
-
-        const { name, age, height } = this.state
-        
+        const { name, age, height } = this.state   
         this.props.addSmurf({name, age, height});
 
         this.setState({

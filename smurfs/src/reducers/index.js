@@ -1,5 +1,11 @@
-import { GET_SMURF, SMURF_SUCCESS, SMURF_FAILED } from '../actions/index';
-// error says not exported from '../actions/index'
+import { GET_SMURF,
+         SMURF_SUCCESS,
+          SMURF_FAILED,
+          ADD_SMURF,
+          NEW_SMURF_SUCCESS,
+          NEW_SMURF_FAILED
+        } from '../actions/index';
+
 
 
 
@@ -34,6 +40,27 @@ export default function (state=initialState, action) {
         ...state,
         fetchingSmurfs: false,
         errorMessage: action.payload.message,
+      }
+    }
+
+    case ADD_SMURF: {
+      return {
+        ...state,
+
+      }
+    }
+
+    case NEW_SMURF_SUCCESS: {
+      return {
+        ...state,
+
+      }
+    }
+
+    case NEW_SMURF_FAILED: {
+      return {
+        ...state,
+        
       }
     }
     
