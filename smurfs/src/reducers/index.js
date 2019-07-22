@@ -1,4 +1,5 @@
-import {ADD_SMURF, GET_SMURF, SMURF_SUCCESS, SMURF_FAILED} from '../actions/index';
+import { GET_SMURF, SMURF_SUCCESS, SMURF_FAILED } from '../actions/index';
+// error says not exported from '../actions/index'
 
 
 
@@ -12,12 +13,6 @@ const initialState = {
 
 export default function (state=initialState, action) {
   switch (action.type) {
-    case ADD_SMURF: {
-      return {
-
-      }
-
-    }
 
     case GET_SMURF: {
       return {

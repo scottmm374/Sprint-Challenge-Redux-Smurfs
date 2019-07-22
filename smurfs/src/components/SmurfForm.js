@@ -8,8 +8,8 @@ class SmurfForm extends React.Component {
         super()
         this.state = {
             name: '',
-            age: 0,
-            height: 0,
+            age: '',
+            height: '',
         }
     }
 
@@ -23,14 +23,14 @@ class SmurfForm extends React.Component {
     newSmurf = (e) => {
         e.preventDefault()
 
-        const {smurf} = this.state
-        const smurfs = {
-            smurf,
-        }
-        this.props.addSmurf(smurfs)
+        const { name, age, height } = this.state
+        
+        this.props.addSmurf(name, age, height)
 
         this.setState({
-            smurfs: ''
+           name: '',
+            age: '',
+            height: '',
         })
     }
 
