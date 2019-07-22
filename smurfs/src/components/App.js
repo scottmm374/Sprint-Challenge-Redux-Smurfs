@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SmurfForm from './SmurfForm';
+import Smurf from './Smurf';
 import { connect } from 'react-redux';
 import{ getSmurf} from '../actions/index';
 import './App.css';
@@ -17,6 +18,7 @@ class App extends Component {
     return (
       <div className="App">
         <SmurfForm /> 
+        <Smurf />
       </div>
     );
   }
@@ -24,8 +26,11 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
+
   
   }
 }
 
 export default connect(mapStateToProps, { getSmurf })(App)
+
+// export default App;
