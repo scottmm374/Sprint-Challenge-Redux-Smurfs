@@ -17,32 +17,31 @@ class SmurfForm extends React.Component {
         e.preventDefault()
         this.setState({
             [e.target.name]: e.target.value,
-        })
-    }
+        });
+    };
 
     newSmurf = (e) => {
         e.preventDefault()
 
         const { name, age, height } = this.state
         
-        this.props.addSmurf(name, age, height)
+        this.props.addSmurf({name, age, height});
 
         this.setState({
            name: '',
             age: '',
             height: '',
-        })
-    }
+        });
+    };
 
     render() {
-        const { smurf } = this.state
         return (
             <div>
-                <form onSubmit={this.newSmurf}>
-                    <input type="text" placeholder='Smurf Name' value={smurf.name} onChange={this.handleChange}/><br/>
-                    <input type="text" placeholder='Smurf Age' value={smurf.age} onChange={this.handleChange}/><br/>
-                    <input type="text" placeholder='Smurf Height' value={smurf.height} onChange={this.handleChange}/><br/>
-                    <button>Add Smurf</button>
+                <form >
+                    <input type="text" placeholder='Smurf Name' value={this.state.name} onChange={this.handleChange}/><br/>
+                    <input type="text" placeholder='Smurf Age' value={this.state.age} onChange={this.handleChange}/><br/>
+                    <input type="text" placeholder='Smurf Height' value={this.state.height} onChange={this.handleChange}/><br/>
+                    <button onClick={() => this.newSmurf()} type='button'>Add Smurf</button>
                 </form>
             </div>
         )
@@ -52,12 +51,9 @@ class SmurfForm extends React.Component {
 const mapStateToProps = (state) => {
     console.log("addSmurfFormState", state)
     return{
-        Smurfs: state.smurfs
+       errorMessage: state.errorMessage,
+       addSmurf: state.addSmurf
     }
 }
 
-const mapDispatchToProps = {
-    addSmurf: addSmurf
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(addSmurf)
+export default connect(mapStateToProps, { addSmurf })(SmurfForm)

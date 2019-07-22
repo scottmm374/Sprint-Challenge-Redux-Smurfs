@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 export const ADD_SMURF = 'ADD_SMURF';
+export const NEW_SMURF_SUCCESS = 'NEW_SMURF_SUCCESS';
+export const NEW_SMURF_FAILED = 'NEW_SMURF_FAILED';
 export const GET_SMURF = 'GET_SMURF';
 export const SMURF_SUCCESS = 'SMURF_SUCCESS';
 export const SMURF_FAILED = 'SMURF_FAILED';
@@ -30,10 +32,10 @@ export function addSmurf(smurf)  {
     return dispatch => {
       dispatch({ type: ADD_SMURF });
       newSmurf.then(({data}) => {
-        dispatch({ type: ADD_SMURF, payload: data });
+        dispatch({ type: NEW_SMURF_SUCCESS, payload: data });
       })
       .catch(err => {
-        dispatch({ type: SMURF_FAILED, payload: err})
+        dispatch({ type: NEW_SMURF_FAILED, payload: err})
       })
     }
 
