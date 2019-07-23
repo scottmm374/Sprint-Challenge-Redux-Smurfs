@@ -10,9 +10,9 @@ export const SMURF_FAILED = 'SMURF_FAILED';
 
 
 
-export function getSmurf () {
-  
-  return(dispatch) => {
+export function getSmurf() {
+
+  return (dispatch) => {
     dispatch({ type: GET_SMURF })
     axios.get('http://localhost:3333/smurfs')
       .then((res) => {
@@ -20,24 +20,23 @@ export function getSmurf () {
         dispatch({ type: SMURF_SUCCESS, payload: res.data })
       })
       .catch((err) => {
-        dispatch({ type: SMURF_FAILED, payload: err.response.data})
+        dispatch({ type: SMURF_FAILED, payload: err.response.data })
       })
   }
 }
 
 
-export function addSmurf(smurf)  {
-  const newSmurf = 
-    axios.post('http://localhost:3333/smurfs/', smurf);
-    return dispatch => {
-      dispatch({ type: ADD_SMURF });
-      newSmurf.then(({data}) => {
-        dispatch({ type: NEW_SMURF_SUCCESS, payload: data });
-      })
+export function addSmurf(smurf) {
+  return (dispatch) => {
+    dispatch({ type: ADD_SMURF });
+    axios.post('http://localhost:3333/smurfs/', smurf)
+          .then(({ data }) => {
+      dispatch({ type: NEW_SMURF_SUCCESS, payload: data });
+    })
       .catch(err => {
-        dispatch({ type: NEW_SMURF_FAILED, payload: err})
+        dispatch({ type: NEW_SMURF_FAILED, payload: err })
       })
-    }
+  }
 
 }
 
@@ -48,7 +47,7 @@ export function addSmurf(smurf)  {
 
 
 
-/* 
+/*
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
