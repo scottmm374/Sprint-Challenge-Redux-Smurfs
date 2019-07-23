@@ -30,11 +30,11 @@ export function addSmurf(smurf) {
   return (dispatch) => {
     dispatch({ type: ADD_SMURF });
     axios.post('http://localhost:3333/smurfs/', smurf)
-          .then(({ data }) => {
-      dispatch({ type: NEW_SMURF_SUCCESS, payload: data });
-    })
+      .then((res) => {
+        dispatch({ type: NEW_SMURF_SUCCESS, payload: res.data });
+      })
       .catch(err => {
-        dispatch({ type: NEW_SMURF_FAILED, payload: err })
+        dispatch({ type: NEW_SMURF_FAILED, payload: err.response.data })
       })
   }
 
