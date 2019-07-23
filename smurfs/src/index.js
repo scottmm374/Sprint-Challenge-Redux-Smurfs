@@ -6,11 +6,11 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from  './reducers/index';
+import rootReducer from  './reducers/index';
 
 
 const store = createStore(
-  reducer,
+  rootReducer,
   applyMiddleware(thunk, logger)
 );
 

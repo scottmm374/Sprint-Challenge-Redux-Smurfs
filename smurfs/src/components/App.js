@@ -26,11 +26,12 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-
-  
+    errorMessage: state.errorMessage,
+    smurfs: state.smurfs,
+    getSmurf: state.getSmurf,
   }
 }
 
 export default connect(mapStateToProps, { getSmurf })(App)
 
-// export default App;
+
